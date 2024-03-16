@@ -9,11 +9,11 @@
 
 This repository houses the scaffolding for a movie rating application. By the end, this application will fulfill the following user stories / features to realize a full CRUD (create, read, update, delete) application:
 
-1. As a user, I should be able to view all saved movie ratings in a visually appealing table
-2. As a user, I should be able to save a movie rating with the movie's name, director, and a 1-5 rating
-3. As a user, I should be able to search for a specific movie rating using the movie's title
-4. As a user, I should be able to view a movie in isolation and have access to edit and delete that movie.
-5. As a user, I should be able to edit a movie.
+1. As a user, I should be able to view all saved movie ratings in a visually appealing table  - **James**
+2. As a user, I should be able to save a movie rating with the movie's name, director, and a 1-5 rating - **Liam**
+3. As a user, I should be able to search for a specific movie rating using the movie's title - **Colin**
+4. As a user, I should be able to view a movie in isolation and have access to edit and delete that movie. - **Noah**
+5. As a user, I should be able to edit a movie. - **Derek**
 6. As a user, I should be able to delete a movie.
 
 ## Python Version
