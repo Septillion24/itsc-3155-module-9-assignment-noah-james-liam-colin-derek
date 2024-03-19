@@ -16,7 +16,7 @@ endblock %} {% block body %}
     <tbody>
         {%for movie in movies.values()%}
         <tr>
-            <td><a href="/{{movie.id}}" class="link-underline-primary">{{movie.title}}</a></td>
+            <td><a href="/movies/{{movie.movie_id}}" class="link-underline-primary">{{movie.title}}</a></td>
             
             <td>{{movie.director}}</td>
             <td>{{movie.rating}}</td>
