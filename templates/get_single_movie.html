@@ -21,7 +21,7 @@
     <p class="id">(ID:{{movie.movie_id}})</p>
     <p class="director"><span>Director:</span> {{movie.director}}</p>
 
-    <button class="editButton"> 
+    <a href="/movies/{{ movie.movie_id }}/edit" class="btn btn-primary"> 
         ✎Edit movie
-    </button>
+    </a>
 {% endblock %}
