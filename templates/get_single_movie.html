@@ -2,7 +2,26 @@
 
 {% block title %}Movie Rating App | Movie{% endblock %}
 
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/get_single_movie.css') }}">
+{% endblock stylesheet %}
+
 {% block body %}
-<h1 class="mb-5"></h1>
-<!-- TODO: Feature 4 -->
+    <div class="titleContent">
+        <h1 class="title">{{movie.title}}</h1>
+        <h2 class="rating">
+            {%for n in range(movie.rating)%}
+                ★
+            {%endfor%}
+            {%for n in range(5-movie.rating)%}
+                ☆
+            {%endfor%}
+        </h2>
+    </div>
+    <p class="id">(ID:{{movie.movie_id}})</p>
+    <p class="director"><span>Director:</span> {{movie.director}}</p>
+
+    <button class="editButton"> 
+        ✎Edit movie
+    </button>
 {% endblock %}
