@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template
+from flask import Flask, abort, redirect, render_template, request
 
 from src.repositories.movie_repository import get_movie_repository
 
@@ -28,6 +28,16 @@ def create_movies_form():
 def create_movie():
     # TODO: Feature 2
     # After creating the movie in the database, we redirect to the list all movies page
+    if request.form.get('movieName').strip() == '':
+        movieName = request.form.get('moveName')
+    else:
+        abort(405, "Method not allowed!!!!!!!")
+    if request.form.get('movieDirector').strip() == '':
+        movieDirector = request.form.get('movieDirector')
+    movieRating = request.form.get('movieRating')
+    movie = movie_repository.create_movie(movieName, movieDirector, movieRating)
+    print(movie_repository.get_all_movies())
+
     return redirect('/movies')
 
 
