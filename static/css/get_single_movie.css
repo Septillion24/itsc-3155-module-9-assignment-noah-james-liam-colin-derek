@@ -1,0 +1,32 @@
+.titleContent {
+    text-align: center;
+}
+.title {
+    font-size: 30pt;
+    margin-bottom: 0;
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
+}
+.rating {
+    font-size: 12pt;
+    color: rgb(161, 138, 4);
+}
+.director{
+    font-size: 15pt;
+}
+.director > span{
+    font-weight: bold;
+}
+.id{
+    font-size: 10pt;
+    margin-bottom: 0;
+}
+.editButton{
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 13pt;
+    background-color: rgb(179, 253, 253);
+}
+.editButton:hover{
+    background-color: rgb(119, 207, 207);
+}
