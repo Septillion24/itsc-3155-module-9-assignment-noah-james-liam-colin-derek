@@ -37,6 +37,21 @@ def search_movies():
     # TODO: Feature 3
     return render_template('search_movies.html', search_active=True)
 
+@app.post('/movies/searched')
+def searched_movies():
+    title = request.form.get('title')
+    movie = Movie(123, 'Star Wars', 'George Lucas', 4)
+    movie1 = Movie(456, "Ferris Bueller's Day Off", 4)
+    movie2 = Movie(789, "The Avenger's", 5)
+    movie3 = Movie(147, 'Frozen', 2)
+    if {{movie1.title}} == title:
+        movie = movie1
+    if {{movie2.title}} == title:
+        movie = movie2
+    if {{movie3.title}} == title:
+        movie = movie3
+    return render_template('searched.html', title=title)
+
 
 @app.get('/movies/<int:movie_id>')
 def get_single_movie(movie_id: int):
