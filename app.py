@@ -1,4 +1,5 @@
-from flask import Flask, abort, redirect, render_template
+from flask import Flask, abort, redirect, render_template, request
+import sys
 
 from src.models.movie import Movie
 from src.repositories.movie_repository import get_movie_repository
@@ -39,18 +40,20 @@ def search_movies():
 
 @app.post('/movies/searched')
 def searched_movies():
-    title = request.form.get('title')
-    movie = Movie(123, 'Star Wars', 'George Lucas', 4)
-    movie1 = Movie(456, "Ferris Bueller's Day Off", 4)
-    movie2 = Movie(789, "The Avenger's", 5)
-    movie3 = Movie(147, 'Frozen', 2)
-    if {{movie1.title}} == title:
-        movie = movie1
-    if {{movie2.title}} == title:
-        movie = movie2
-    if {{movie3.title}} == title:
-        movie = movie3
-    return render_template('searched.html', title=title)
+    title = request.form.get('movie')
+    title1 = "Ferris Bueller's Day Off"
+    title2 = "The Avenger's"
+    title3 = "Frozen"
+    print(title, file=sys.stderr)
+    if title1 == title:
+        movie = Movie(456, "Ferris Bueller's Day Off", 'John Hguhes', 4)
+    elif title2 == title:
+        movie = Movie(789, "The Avenger's", 'Joss Whedon', 5)
+    elif title3 == title:
+        movie = Movie(147, 'Frozen', 'Jennifer Lee', 2)
+    else:
+        movie = Movie(123, 'Star Wars', 'George Lucas', 4)
+    return render_template('searched.html', movie=movie)
 
 
 @app.get('/movies/<int:movie_id>')
