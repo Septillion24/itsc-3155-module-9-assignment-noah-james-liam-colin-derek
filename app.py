@@ -43,7 +43,6 @@ def create_movie():
         abort(400, "Invalid input: Rating required")
     
     movie = movie_repository.create_movie(movieName, movieDirector, movieRating)
-    print(movie_repository.get_all_movies())
 
     return redirect('/movies')
 
