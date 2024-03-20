@@ -30,12 +30,18 @@ def create_movie():
     # TODO: Feature 2
     # After creating the movie in the database, we redirect to the list all movies page
     if request.form.get('movieName').strip() == '':
-        movieName = request.form.get('moveName')
+        abort(400, "Invalid input: Movie name required")
     else:
-        abort(405, "Method not allowed!!!!!!!")
-    if request.form.get('movieDirector').strip() == '':
-        movieDirector = request.form.get('movieDirector')
-    movieRating = request.form.get('movieRating')
+        movieName = request.form.get('movieName')
+    if request.form.get('directorName').strip() == '':
+        abort(400, "Invalid input: Director name required")
+    else:
+        movieDirector = request.form.get('directorName')
+    if request.form.get('rating') in ['1', '2', '3', '4', '5']:
+        movieRating = request.form.get('rating')
+    else:
+        abort(400, "Invalid input: Rating required")
+    
     movie = movie_repository.create_movie(movieName, movieDirector, movieRating)
     print(movie_repository.get_all_movies())
 
