@@ -13,6 +13,19 @@ def get_movie_repository():
 
         def __init__(self) -> None:
             self._db: dict[int, Movie] = {}
+            self._prepopulate_movies() # Temporary, for testing purposes
+
+        # Prepopulate movies
+        def _prepopulate_movies(self):
+            movies = [
+                Movie(1, 'The Shawshank Redemption', 'Frank Darabont', 5),
+                Movie(2, 'The Godfather', 'Francis Ford Coppola', 4),
+                Movie(3, 'The Dark Knight', 'Christopher Nolan', 3),
+                Movie(4, 'The Godfather: Part II', 'Francis Ford Coppola', 2),
+                Movie(5, 'Star Wars', 'George Lucas', 4)
+            ]
+            for movie in movies:
+                self._db[movie.movie_id] = movie
 
         def get_all_movies(self) -> dict[int, Movie]:
             """Simply return all movies from the in-memory database"""
