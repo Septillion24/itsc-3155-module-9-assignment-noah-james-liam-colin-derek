@@ -44,10 +44,7 @@ def search_movies():
 def get_single_movie(movie_id: int):
     # TODO: Feature 4
     
-    # generate a fake movie for testing
-    movie = Movie(123, 'Star Wars', 'George Lucas', 4)
-    
-    # movie = movie_repository.get_movie_by_id(movie_id)
+    movie = movie_repository.get_movie_by_id(movie_id)
     
     if movie == None:
         abort(404)
