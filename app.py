@@ -68,6 +68,8 @@ def get_single_movie(movie_id: int):
     
     movie = movie_repository.get_movie_by_id(movie_id)
     
+    movie.rating = int(movie.rating) # Ensures that the rating is an integer
+    
     if movie == None:
         abort(404)
     return render_template('get_single_movie.html',movie=movie)
