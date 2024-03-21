@@ -1,4 +1,3 @@
-# TODO: Feature 1
 from app import app
 
 def test_all_movies_blank():
@@ -6,4 +5,5 @@ def test_all_movies_blank():
     response = test_app.get('/movies')
     assert 200 == response.status_code
 
-def 
+
+
