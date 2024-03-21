@@ -55,9 +55,6 @@ def search_movies():
 
 @app.post('/movies/searched')
 def searched_movies():
-    movie_repository.create_movie("Ferris Bueller's Day Off", 'John Hughes', 4)
-    movie_repository.create_movie("The Avenger's", 'Joss Whedon', 5)
-    movie_repository.create_movie('Frozen', 'Jennifer Lee', 2)
     title = request.form.get('movie')
     movie = None
     all_movies = movie_repository.get_all_movies()
