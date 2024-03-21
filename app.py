@@ -1,6 +1,5 @@
 from flask import Flask, abort, redirect, render_template, request
 
-from src.models.movie import Movie
 from src.repositories.movie_repository import get_movie_repository
 
 app = Flask(__name__)
@@ -28,7 +27,6 @@ def create_movies_form():
 
 @app.post('/movies')
 def create_movie():
-    # TODO: Feature 2
     # After creating the movie in the database, we redirect to the list all movies page
     if request.form.get('movieName').strip() == '':
         abort(400, "Invalid input: Movie name required")
@@ -50,14 +48,10 @@ def create_movie():
 
 @app.get('/movies/search')
 def search_movies():
-    # TODO: Feature 3
     return render_template('search_movies.html', search_active=True)
 
 @app.post('/movies/searched')
 def searched_movies():
-    movie_repository.create_movie("Ferris Bueller's Day Off", 'John Hughes', 4)
-    movie_repository.create_movie("The Avenger's", 'Joss Whedon', 5)
-    movie_repository.create_movie('Frozen', 'Jennifer Lee', 2)
     title = request.form.get('movie')
     movie = None
     all_movies = movie_repository.get_all_movies()
@@ -71,7 +65,6 @@ def searched_movies():
 
 @app.get('/movies/<int:movie_id>')
 def get_single_movie(movie_id: int):
-    # TODO: Feature 4
     
     movie = movie_repository.get_movie_by_id(movie_id)
     
@@ -90,7 +83,6 @@ def get_edit_movies_page(movie_id: int):
 
 @app.post('/movies/<int:movie_id>')
 def update_movie(movie_id: int):
-    # TODO: Feature 5
     # After updating the movie in the database, we redirect back to that single movie page
 
     # Extracting Movie Data
@@ -107,8 +99,8 @@ def update_movie(movie_id: int):
     # Return to Movie Page
     return redirect(f'/movies/{movie_id}')
 
-
-@app.post('/movies/<int:movie_id>/delete')
-def delete_movie(movie_id: int):
-    # TODO: Feature 6
-    pass
+# we only have 5 guys (burger)
+# @app.post('/movies/<int:movie_id>/delete')
+# def delete_movie(movie_id: int):
+#     # TODO: Feature 6
+#     pass
