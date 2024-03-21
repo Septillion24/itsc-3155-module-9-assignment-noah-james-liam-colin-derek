@@ -39,6 +39,21 @@ def search_movies():
     # TODO: Feature 3
     return render_template('search_movies.html', search_active=True)
 
+@app.post('/movies/searched')
+def searched_movies():
+    movie_repository.create_movie("Ferris Bueller's Day Off", 'John Hughes', 4)
+    movie_repository.create_movie("The Avenger's", 'Joss Whedon', 5)
+    movie_repository.create_movie('Frozen', 'Jennifer Lee', 2)
+    title = request.form.get('movie')
+    movie = None
+    all_movies = movie_repository.get_all_movies()
+    for x in all_movies.values():
+        if x.title == title:
+            movie = x
+    if movie == None:
+        abort(404)
+    return redirect("/movies/" + str(movie.movie_id), code=200)
+
 
 @app.get('/movies/<int:movie_id>')
 def get_single_movie(movie_id: int):
