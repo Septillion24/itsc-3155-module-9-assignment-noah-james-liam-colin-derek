@@ -2,7 +2,7 @@
 from src.models.movie import Movie
 
 
-def test_get_movie_by_title():
-    movie = Movie(456, "Ferris Bueller's Day Off", 'John Hughes', 4)
-
-    assert movie.title == "Ferris Bueller's Day Off"
+def test_get_movie_by_title(self):
+    movie = self.repo.create_movie("Test Movie", "Test Director", 5)
+    retrieved_movie = self.repo.get_movie_by_title("Test Movie")
+    self.assertEqual(movie, retrieved_movie)
