@@ -40,20 +40,18 @@ def search_movies():
 
 @app.post('/movies/searched')
 def searched_movies():
+    movie_repository.create_movie("Ferris Bueller's Day Off", 'John Hughes', 4)
+    movie_repository.create_movie("The Avenger's", 'Joss Whedon', 5)
+    movie_repository.create_movie('Frozen', 'Jennifer Lee', 2)
     title = request.form.get('movie')
-    title1 = "Ferris Bueller's Day Off"
-    title2 = "The Avenger's"
-    title3 = "Frozen"
-    print(title, file=sys.stderr)
-    if title1 == title:
-        movie = Movie(456, "Ferris Bueller's Day Off", 'John Hguhes', 4)
-    elif title2 == title:
-        movie = Movie(789, "The Avenger's", 'Joss Whedon', 5)
-    elif title3 == title:
-        movie = Movie(147, 'Frozen', 'Jennifer Lee', 2)
-    else:
-        movie = Movie(123, 'Star Wars', 'George Lucas', 4)
-    return render_template('searched.html', movie=movie)
+    movie = None
+    all_movies = movie_repository.get_all_movies()
+    for x in all_movies.values():
+        if x.title == title:
+            movie = x
+    if movie == None:
+        abort(404)
+    return redirect("/movies/" + str(movie.movie_id), code=200)
 
 
 @app.get('/movies/<int:movie_id>')
